@@ -1,0 +1,131 @@
+<h4 class="pb-4">{{#if id.requirement_id}}
+        Update
+        {{else}}
+        Add
+        {{/if}}   Requirement</h4>
+<form method="post">
+  <div class="form-group row">
+    <label for="inputName" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+      <input
+        type="hidden"
+        name="id"
+        value="{{id.requirement_id}}"
+      />
+      <input
+        type="hidden"
+        class="form-control"
+        id="inputName"
+        name="_csrf"
+        value="{{_csrf}}"
+      />
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="inputPositionApplied" class="col-sm-2 col-form-label">Position:</label>
+    <div class="col-sm-10">
+      <select class="form-control" aria-label="Default select example" name="position">
+        {{#each position}}
+    <option value="{{@key}}" {{{isSelected ../setSelectedPosition @key}}}>
+        {{this}}
+    </option>
+    {{/each}}        
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPositionApplied" class="col-sm-2 col-form-label">Job Location:</label>
+    <div class="col-sm-10">
+      <select class="form-control" aria-label="Default select example" name="job_location">
+        {{#each job_location}}
+    <option value="{{@key}}" {{{isSelected ../setSelectedJobLocation @key}}}>
+        {{this}}
+    </option>
+    {{/each}}        
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputExperienceLevel" class="col-sm-2 col-form-label">Department:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name="department"
+        class="form-control"
+        id="inputExperienceLevel"
+        placeholder="Department"
+        maxlength="50"
+        value="{{department requirement}}"
+      />
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="inputExperienceLevel" class="col-sm-2 col-form-label">Position Type:</label>
+    <div class="col-sm-10">
+      <select class="form-control" aria-label="Default select example" name="position_type">
+        {{#each position_type}}
+    <option value="{{@key}}" {{{isSelected ../setSelectedpositionType @key}}}>
+        {{this}}
+    </option>
+    {{/each}}        
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputContactNo" class="col-sm-2 col-form-label">Experience Level:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        name="experience_level"
+        class="form-control"
+        id="inputContactNo"
+        placeholder="Experience Level"
+        maxlength="50"
+        value="{{experience_level requirement}}"
+      />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputAddress" class="col-sm-2 col-form-label">Project Name:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        name="project_name"
+        id="inputAddress"
+        maxlength="100"
+        placeholder="Project Name"
+        value="{{project_name requirement}}"
+      />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputAddress" class="col-sm-2 col-form-label">Job Description:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        name="job_description"
+        id="inputAddress"
+        maxlength="100"
+        placeholder="Detailed job description..."
+        value="{{job_description requirement}}"
+      />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputAddress" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary  align-items-right">
+        {{#if id.requirement_id}}
+        Update
+        {{else}}
+        Submit
+        {{/if}}        
+        </button>
+    </div>
+  </div>
+  
+</form>

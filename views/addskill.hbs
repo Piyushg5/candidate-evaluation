@@ -1,0 +1,66 @@
+<h4 class="pb-4">{{#if id.skill_id}}
+        Update
+        {{else}}
+        Add
+        {{/if}}   Skill</h4>
+<form method="post">
+  <div class="form-group row">
+    <label for="inputName" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+      <input
+        type="hidden"
+        name="id"
+        value="{{id.skill_id}}"
+      />
+      <input
+        type="hidden"
+        class="form-control"
+        id="inputName"
+        name="_csrf"
+        value="{{_csrf}}"
+      />
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="inputAddress" class="col-sm-2 col-form-label">Skill Name:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        name="skill_name"
+        id="inputAddress"
+        maxlength="100"
+        placeholder="Skill Name"
+        value="{{skill_name skill}}"
+      />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputAddress" class="col-sm-2 col-form-label">Sub Skills Name:</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        name="skill_name"   
+        id="inputAddress"
+        maxlength="100"
+        placeholder="Sub Skills Name ..."
+        value="{{skill_name skill}}"
+      />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputAddress" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary  align-items-right">
+        {{#if id.skill_id}}
+        Update
+        {{else}}
+        Submit
+        {{/if}}        
+        </button>
+    </div>
+  </div>
+  
+</form>

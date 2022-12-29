@@ -1,0 +1,24 @@
+.navbar-light .active {
+  background: gray !important;
+  color: white !important;
+}
+.bg-orange {
+  background: #ffa500;
+}
+.title {
+  border-bottom: 1px solid #e73a3b;
+  color: #e73a3b;
+}
+.evaluationForm.span {
+  font-size: 10px;
+}
+#add_button, #add_attribute_button {
+  position: relative;
+  top: 28px;
+  left: 7px;
+}
+#removeRow {
+  position: relative;
+  top: 28px;
+  left: 7px;
+}

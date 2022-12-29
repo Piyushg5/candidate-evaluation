@@ -1,0 +1,168 @@
+<h4 class="pb-2 mb-4 title">Feedback</h4>
+
+ <div class="form-group row">
+  <label
+    for="inputPositionApplied"
+    class="col-sm-4 col-form-label font-weight-bold"
+  >Candidate Name:</label>
+  <div class="col-sm-8 text-capitalize">
+    {{name candidate}}
+  </div>
+</div>
+<div class="form-group row">
+  <label
+    for="inputPositionApplied"
+    class="col-sm-4 col-form-label font-weight-bold"
+  >Position Applied For:</label>
+  <div class="col-sm-8 text-capitalize">
+    {{position_applied candidate}}
+  </div>
+</div>
+<div class="form-group row">
+  <label
+    for="inputPositionApplied"
+    class="col-sm-4 col-form-label font-weight-bold"
+  >Experience Level:</label>
+  <div class="col-sm-8 text-capitalize">
+    {{experience_level candidate}}
+  </div>
+</div>
+<div class="form-group row">
+  <label
+    for="inputPositionApplied"
+    class="col-sm-4 col-form-label font-weight-bold"
+  >Contact Number:</label>
+  <div class="col-sm-8 text-capitalize">
+    {{contact_no candidate}}
+  </div>
+</div>
+<div class="form-group row">
+  <label
+    for="inputPositionApplied"
+    class="col-sm-4 col-form-label font-weight-bold"
+  >Address:</label>
+  <div class="col-sm-8 text-capitalize">
+    {{address candidate}}
+  </div>
+</div>
+
+<div class="text-left pt-4">
+  <h4 class="pb-2 mb-4 title">{{feedbackFrom}} - Evaluation Form </h4>
+  <p class="text-center"><span style="font-size: 12px;">(Rating Criteria: 5 - Excelent, 4 - Good, 3- Fair, 2 - Average, 1 - Poor)</span></p>
+  
+</div>
+<form method="post">
+  <input
+      type="hidden"
+      id="inputName"
+      name="_csrf"
+      value="{{_csrf}}"
+    />
+    {{#if feedbackRows}}
+    {{{feedbackRows}}}
+    {{else}}
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="inputEmail4">Technical Skills</label>
+      <select class="form-control" aria-label="Default select example" id="inputEmail4" name="technical_skills[]">
+        {{#each technical_skills}}
+    <option value={{this}} {{{isSelected ../setCountry @key}}}>
+        {{this}}
+    </option>
+    {{/each}}   
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputPassword4">Rating</label>
+      <select class="form-control" aria-label="Default select example" name="ratings[]">
+        {{#each ratings}}
+    <option value="{{@key}}" {{{isSelected ../setCountry @key}}}>
+        {{this}}
+    </option>
+    {{/each}}        
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputPassword4">Weightage</label>
+      <input type="text" class="form-control" id="inputPassword4" name="weightage[]" value="{{skills skills 1 'weightage'}}" />
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputPassword4">Interviewer's comment</label>
+      <input type="text" class="form-control" id="inputPassword4" name="interviewer_comment[]" value="{{skills skills 1 'interviewer_comment'}}" />
+    </div>
+    <div class="input-group-btn" id="add_button">      
+        <button class="btn btn-success" type="button"> 
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-minus" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>
+        </button>
+    </div>          
+  </div>
+  {{/if}}
+  <div id="technical_skills_fields"></div>
+<!--other attribute-->  
+  {{#if feedbackAttributeRows}}
+  {{{feedbackAttributeRows}}}
+  {{else}}
+  <div class="form-row pt-5">
+    <div class="form-group col-md-3">
+      <label for="inputEmail4">Other Attribute</label>
+      <input type="text" class="form-control" id="inputEmail4" name="other_attribute[]" value="{{attributes attribute 1 'other_attribute'}}" />
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputPassword4">Rating</label>
+      <select class="form-control" aria-label="Default select example" name="other_ratings[]">
+        {{#each ratings}}
+    <option value="{{@key}}" {{{isSelected ../setCountry @key}}}>
+        {{this}}
+    </option>
+    {{/each}}        
+      </select>
+    </div>   
+    <div class="form-group col-md-5">
+      <label for="inputPassword4">Interviewer's comment</label>
+      <input type="text" class="form-control" id="other_interviewer_comment2" name="other_interviewer_comment[]" value="{{attributes attribute 1 'other_interviewer_comment'}}" />
+    </div>
+    <div class="input-group-btn" id="add_attribute_button">
+      
+        <button class="btn btn-success" type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+</svg></button>
+      </div>
+  </div>
+{{/if}}
+  <div id="attribute_fields"></div>
+
+  <div class="form-row">
+    <div class="form-group col-md-10">  
+      <label for="overallfeedback">Overall Feedback</label>
+      <textarea class="form-control" id="write_something" name="write_something" rows="3">{{write_something}}</textarea>
+    </div>
+  </div>
+
+<div class="form-row">
+  <div class="form-group col-md-5">      
+      <div class="form-check-inline">
+  <label class="form-check-label">
+    <input type="radio" class="form-check-input" name="optradio" checked value="2" {{isRadioSelected optradio 2}}>On Hold
+  </label>
+</div>
+<div class="form-check-inline">
+  <label class="form-check-label">
+    <input type="radio" class="form-check-input" name="optradio" value="1" {{isRadioSelected optradio 1}}>Next Round
+  </label>
+</div>
+<div class="form-check-inline disabled">
+  <label class="form-check-label">
+    <input type="radio" class="form-check-input" name="optradio" value="0" {{isRadioSelected optradio 0}}>No Go
+  </label>
+</div>
+</div>
+    <div class="form-group col-md-5 text-right">      
+      <a href="/feedback/download/{{feedbackFrom}}/{{id.candidate_id}}" type="button" class="btn btn-primary  align-items-right">Download</a>
+      <button type="submit" class="btn btn-primary  align-items-right">        
+        Save        
+        </button>
+        </div>
+  </div>  
+</form>

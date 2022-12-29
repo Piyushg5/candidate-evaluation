@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>{{title}}</title>
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#4DA5F4" />
+  <meta name="csrf-token" content="_csrf" />
+  <link rel="icon" type="image/x-icon" href="/favicon.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  
+  <script>
+    
+  </script>
+</head>
+<body class="{{template}}">
+  {{> header}}
+  
+  <div class="container">
+    {{> flash}}
+    <div class="d-flex" id="wraper"> 
+    
+    {{#if user}}
+      {{> leftnav}}
+    {{/if}}
+    <div class="container-fluid" id="content">
+      {{{body}}}
+    </div>
+	  
+    </div>
+    
+  </div>
+  {{> footer}}
+  <script src="/js/lib/popper.min.js"></script>
+  <script src="/js/lib/bootstrap.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
